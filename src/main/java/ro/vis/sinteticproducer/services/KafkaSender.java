@@ -26,19 +26,19 @@ public class KafkaSender {
     }
 
     @Async
-    public boolean sendToKafka(final Transaction transactionMessage) {
+    public boolean sendToKafka(final Transaction transaction) {
         MessageChannel channel = kafkaChannels.eventsOutput();
-        Message<String> eventMessage = MessageBuilder
-                .withPayload(transactionMessage.toString())
+        Message<String> transactionMessage = MessageBuilder
+                .withPayload(transaction.toString())
                 .setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON)
                 .build();
-        return sendMessage(channel, eventMessage);
+        return sendMessage(channel, transactionMessage);
     }
 
-    private boolean sendMessage(final MessageChannel channel, final Message message) {
+    private boolean sendMessage(final MessageChannel channel, final Message<String> message) {
         try {
-            final boolean messageSent = channel.send(message);
-            if (!messageSent) {
+            final boolean isSent = channel.send(message);
+            if (!isSent) {
                 LOG.error("The message could not be sent due to a non-fatal reason:", message.getPayload());
                 return false;
             }
