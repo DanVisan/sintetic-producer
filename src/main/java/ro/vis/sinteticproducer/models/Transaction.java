@@ -26,7 +26,7 @@ public class Transaction {
                 "\"to\":\"" + to + "\"," +
                 "\"value\":" + value + "," +
                 "\"currency\":\"" + currency + "\"," +
-                "\"message\":\"" + message + "\"" +
+                "\"message\":\"" + message + "\"," +
                 "\"timestamp\":\"" + timestamp.toString() + "\"" +
                 "}";
     }
