@@ -17,7 +17,7 @@ public class TransactionService {
     }
 
     public boolean sendTransaction() {
-        Transaction message = new Transaction("1", "gigi", "relu", 10.2, "RON", "taxi", LocalDateTime.now());
+        Transaction message = new Transaction(1L, "gigi", "relu", 10.2, "RON", "taxi", LocalDateTime.now());
         return kafkaSender.sendToKafka(message);
     }
 }

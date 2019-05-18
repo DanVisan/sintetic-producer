@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 public class Transaction {
-    private String id;
-    private String from;
-    private String to;
+    private long id;
+    private String sender;
+    private String receiver;
     private double value;
     private String currency;
     private String message;
@@ -21,9 +21,9 @@ public class Transaction {
     @Override
     public String toString() {
         return "{" +
-                "\"id\":\"" + id + "\"," +
-                "\"from\":\"" + from + "\"," +
-                "\"to\":\"" + to + "\"," +
+                "\"id\":" + id + "," +
+                "\"sender\":\"" + sender + "\"," +
+                "\"receiver\":\"" + receiver + "\"," +
                 "\"value\":" + value + "," +
                 "\"currency\":\"" + currency + "\"," +
                 "\"message\":\"" + message + "\"," +
