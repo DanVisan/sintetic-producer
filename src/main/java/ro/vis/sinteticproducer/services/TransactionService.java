@@ -16,8 +16,8 @@ public class TransactionService {
         this.kafkaSender = Objects.requireNonNull(kafkaSender, "kafkaSender must not be null!");
     }
 
-    public boolean sendTransaction() {
-        Transaction message = new Transaction(1L, "gigi", "relu", 10.2, "RON", "taxi", LocalDateTime.now());
+    public boolean sendTransaction(String receiver, String sender, double value) {
+        Transaction message = new Transaction(1L, sender, receiver, value, "RON", "taxi", LocalDateTime.now());
         return kafkaSender.sendToKafka(message);
     }
 }
